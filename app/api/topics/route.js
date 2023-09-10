@@ -15,6 +15,14 @@ export async function GET() {
   return NextResponse.json({ topics });
 }
 
+export async function PUT(request) {
+  const id = request.nextUrl.searchParams.get('id');
+  const { newTitle: title, newDescription: description } = await request.json();
+  await connectMongoDB();
+  await Topic.findByIdAndUpdate(id, { title, description });
+  return NextResponse.json({ message: 'Topic updated' }, { status: 200 });
+}
+
 export async function DELETE(request) {
   const id = request.nextUrl.searchParams.get('id');
   await connectMongoDB();
