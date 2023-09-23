@@ -31,7 +31,7 @@ export default function TopicsList() {
     fetchTopics();
 
     // Set up an interval to fetch topics every 5 seconds
-    const intervalId = setInterval(fetchTopics, 5000);
+    const intervalId = setInterval(fetchTopics, 10000);
 
     // Clean up the interval when the component unmounts
     return () => clearInterval(intervalId);
